@@ -21,7 +21,7 @@ Este é um projeto fullstack desenvolvido com Laravel e Vue.js para a empresa GA
 
 1. Clone o repositório:
     ```sh
-    git clone https://github.com/SallesDanilo/test_fullstack.git
+    git clone -b master https://github.com/SallesDanilo/test_fullstack.git
     cd test_fullstack
     ```
 
