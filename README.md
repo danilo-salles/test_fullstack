@@ -24,22 +24,26 @@ Este é um projeto fullstack desenvolvido com Laravel e Vue.js para a empresa GA
     git clone -b master https://github.com/SallesDanilo/test_fullstack.git
     cd test_fullstack
     ```
+2. Suba o container docker:
+    ```sh
+    docker compose up --build
+    ```
 
-2. Instale as dependências do Laravel:
+4. Instale as dependências do Laravel:
     ```sh
     composer install
     ```
-    3. Copie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente, especialmente a configuração do banco de dados:
-    ```sh
-    cp .env.example .env
-    ```
+5. Copie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente, especialmente a configuração do banco de dados:
+```sh
+cp .env.example .env
+```
 
-4. Gere a chave da aplicação Laravel:
+5. Gere a chave da aplicação Laravel:
     ```sh
     php artisan key:generate
     ```
 
-5. Execute as migrações e seeders para configurar o banco de dados:
+6. Execute as migrações e seeders para configurar o banco de dados:
     ```sh
     php artisan migrate --seed
     ```
@@ -134,7 +138,7 @@ Após seguir os passos de configuração, a aplicação estará disponível em:
 
 
   ** Documentação da API
-  
+ ```sh 
     Níveis
 GET - http://localhost:8000/api/niveis
 Retorna todos os níveis cadastrados.
@@ -331,7 +335,7 @@ Exemplo de retorno 200:
             "id": 8,
             "nivel": "junior",
             "quantidade": 1
-        }
+        }```
     ]
 }Exemplo de retorno 404:
 {
