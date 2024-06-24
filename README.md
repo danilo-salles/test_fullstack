@@ -1,6 +1,6 @@
 # Test Fullstack
 
-Este é um projeto fullstack desenvolvido com Laravel e Vue.js. Ele serve como um exemplo de aplicação completa, incluindo configuração, uso de APIs e uma interface de usuário interativa.
+Este é um projeto fullstack desenvolvido com Laravel e Vue.js para a empresa GAZIN TECH
 
 ## Estrutura do Projeto
 
