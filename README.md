@@ -122,3 +122,210 @@ Após seguir os passos de configuração, a aplicação estará disponível em:
 - **Removendo um Desenvolvedor**:
   1. Clique no botão "Deletar" ao lado do desenvolvedor que deseja remover.
   2. Confirme a remoção no modal que será exibido.
+
+
+  ** Documentação da API
+  
+    Níveis
+GET - http://localhost:8000/api/niveis
+Retorna todos os níveis cadastrados.
+Exemplo de retorno 200:
+{
+    "data": [
+        {
+            "id": 8,
+            "nivel": "veritatis"
+        },
+        {
+            "id": 9,
+            "nivel": "debitis"
+        }
+    ]
+}
+Exemplo de retorno 400:
+{
+    "error": "Erro específico indicando o motivo do erro"
+}
+POST - http://localhost:8000/api/niveis
+Cadastra um novo nível.
+Exemplo de body:
+{
+  "nivel": "junior"
+}
+Exemplo de retorno 200:
+{
+    "success": true,
+    "message": "Nível criado com sucesso.",
+    "data": {
+        "nivel": "junior",
+        "id": 17
+    }
+}
+Exemplo de retorno 400:
+{
+    "error": {
+        "nivel": [
+            "O campo nivel é obrigatório."
+        ]
+    }
+}
+PUT - http://localhost:8000/api/niveis/17
+Atualiza um nível existente.
+Exemplo de body:
+{
+    "nivel": "juniorfs"
+}
+Exemplo de retorno 200:
+{
+    "success": true,
+    "message": "Nível atualizado com sucesso.",
+    "data": {
+        "id": 17,
+        "nivel": "juniorfs"
+    }
+}
+Exemplo de retorno 400:
+{
+    "error": {
+        "nivel": [
+            "O campo nivel é obrigatório."
+        ]
+    }
+}
+Exemplo de retorno 404:
+{
+    "error": "Nível não encontrado"
+}
+DELETE - http://localhost:8000/api/niveis/17
+Deleta um nível pelo ID.
+Exemplo de retorno 200:
+{
+    "success": true,
+    "message": "Nível deletado com sucesso."
+}
+Exemplo de retorno 404:
+{
+    "error": "Nível não encontrado para deletar"
+}
+Desenvolvedores
+GET - http://localhost:8000/api/desenvolvedores
+Retorna todos os desenvolvedores cadastrados.
+Exemplo de retorno 404:
+{
+    "message": "Não há desenvolvedores cadastrados"
+}
+Exemplo de retorno 200:
+{
+    "data": [
+        {
+            "id": 6,
+            "nome": "Natalia Robert",
+            "sexo": "F",
+            "data_nascimento": "01-05-1987",
+            "idade": 37,
+            "hobby": "Lutar",
+            "nivel": {
+                "id": 16,
+                "nivel": "quia"
+            }
+        }
+    ],
+    "meta": {
+        "total": 1,
+        "per_page": 10,
+        "current_page": 1,
+        "last_page": 1
+    }
+}
+POST - http://localhost:8000/api/desenvolvedores
+Cadastra um novo desenvolvedor.
+Exemplo de body:
+{
+  "nivel_id": 16,
+  "nome": "Natalia Robert",
+  "sexo": "F",
+  "data_nascimento": "1987-05-01",
+  "hobby": "Lutar"
+}
+Exemplo de retorno 201:
+{
+    "success": true,
+    "message": "Desenvolvedor criado com sucesso.",
+    "data": {
+        "nivel_id": 16,
+        "nome": "Natalia Robert",
+        "sexo": "F",
+        "data_nascimento": "1987-05-01",
+        "hobby": "Lutar",
+        "id": 6
+    }
+}
+Exemplo de retorno 400:
+{
+    "error": "Desenvolvedor já existe com os mesmos dados"
+}
+ou
+{
+    "error": {
+        "sexo": [
+            "O campo sexo é obrigatório."
+        ]
+    }
+}
+PUT - http://localhost:8000/api/desenvolvedores/6
+Atualiza um desenvolvedor existente.
+Exemplo de body:
+{
+    "nivel_id": 16,
+    "nome": "Natalia Robert Junior",
+    "sexo": "F",
+    "data_nascimento": "1987-05-01",
+    "hobby": "Lutar"
+}
+Exemplo de retorno 200:
+{
+    "success": true,
+    "message": "Desenvolvedor atualizado com sucesso.",
+    "data": {
+        "id": 6,
+        "nivel_id": 16,
+        "nome": "Natalia Robert Junior",
+        "sexo": "F",
+        "hobby": "Lutar",
+        "data_nascimento": "1987-05-01",
+        "created_at": "2024-06-24T14:56:36.000000Z",
+        "updated_at": "2024-06-24T15:01:14.000000Z"
+    }
+}
+Exemplo de retorno 404:
+{
+    "error": "Desenvolvedor não encontrado"
+}
+DELETE - http://localhost:8000/api/desenvolvedores/6
+Deleta um desenvolvedor pelo ID.
+Exemplo de retorno 200:
+{
+    "success": true,
+    "message": "Desenvolvedor deletado com sucesso."
+}
+Exemplo de retorno 404:
+{
+    "error": "Desenvolvedor não encontrado"
+}
+
+GET  - http://localhost:8000/api/niveis/desenvolvedores/count
+Retorna os desenvolvedores cadastrados por nivel
+Exemplo de retorno 200:
+{
+    "data": [
+        {
+            "id": 8,
+            "nivel": "junior",
+            "quantidade": 1
+        }
+    ]
+}Exemplo de retorno 404:
+{
+    "message": "Não há desenvolvedores cadastrados por nível"
+}
+
