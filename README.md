@@ -29,8 +29,17 @@ Este é um projeto fullstack desenvolvido com Laravel e Vue.js para a empresa GA
     ```sh
     composer install
     ```
+    3. Copie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente, especialmente a configuração do banco de dados:
+    ```sh
+    cp .env.example .env
+    ```
 
-3. Execute as migrações e seeders para configurar o banco de dados:
+4. Gere a chave da aplicação Laravel:
+    ```sh
+    php artisan key:generate
+    ```
+
+5. Execute as migrações e seeders para configurar o banco de dados:
     ```sh
     php artisan migrate --seed
     ```
