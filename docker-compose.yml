@@ -1,0 +1,40 @@
+services:
+  backend:
+    container_name: app_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend/app:/var/www/html
+      - ./backend/app/composer.json:/var/www/html/composer.json
+    networks:
+      - bridge
+
+  frontend:
+    container_name: app_frontend
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    networks:
+      - bridge
+
+  db_mysql:
+    image: mysql:5.7
+    container_name: app_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+    networks:
+      - bridge
+    volumes:
+      - db_data:/var/lib/mysql
+networks:
+  bridge:
+volumes:
+  db_data:
